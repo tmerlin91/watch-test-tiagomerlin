@@ -18,10 +18,12 @@ jobs:
           node-version: 22
 
       - name: Instalar dependências
-        run: npm install
+        run: npm ci
 
-      - name: Instalar Playwright
-        run: npx playwright install chromium
+      - name: Instalar browsers manualmente
+        run: |
+          chmod +x node_modules/.bin/playwright
+          npx playwright install chromium
 
       - name: Rodar testes
-        run: npx playwright test --reporter=line
+        run: npx playwright test
